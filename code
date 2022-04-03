@@ -1,0 +1,51 @@
+def check(arr,key,k):
+    i=0
+    while k>0:
+        arr[i] = arr[i]-key
+        i+=1
+        k-=1
+        print("arr",arr)
+    if min(arr)<0:
+        return False
+    return True
+        
+
+from collections import defaultdict
+candies = [4,7,5] #[5,8,6]
+k = 4  #3
+if sum(candies)<k:
+    print(0)
+else:
+    mn = min(candies)
+    arr = [mn]*(len(candies))
+    for i in candies:
+        if i>mn:
+            arr.append(i-mn)
+print(arr)
+arr.sort()
+d = defaultdict(lambda:0)
+for i in arr:
+    d[i]+=1
+print(d)
+a =[]
+for i in d.values():
+    a.append(i)
+print(a)
+key =[]
+for i in d:
+    key.append(i)
+kee= key[::-1]
+print(kee)
+y = []
+for u in range(len(a)):
+    y+=[key[u]]*a[u]
+x = y[::-1]
+print(x)
+i=0
+print(kee[i])
+# print(check(x,4,k))
+while check(x,kee[i],k)==False:
+    x = y[::-1]
+    print(x)
+    i+=1
+print(kee[i])
